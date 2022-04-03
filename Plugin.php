@@ -1,4 +1,4 @@
-<?php namespace Winter\Mandrill;
+<?php namespace Winter\MandrillDriver;
 
 use App;
 use Backend;
@@ -17,8 +17,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Mandrill',
-            'description' => 'winter.mandrill::lang.plugin_description',
+            'name'        => 'Mandrill driver',
+            'description' => 'winter.mandrilldriver::lang.plugin_description',
             'author'      => 'Winter',
             'icon'        => 'icon-leaf'
         ];
@@ -61,9 +61,9 @@ class Plugin extends PluginBase
 
             $widget->addTabFields([
                 'mandrill_secret' => [
-                    "tab"     => "system::lang.mail.general",
-                    'label'   => 'winter.mandrill::lang.fields.mandrill_secret.label',
-                    'commentAbove' => 'winter.mandrill::lang.fields.mandrill_secret.comment',
+                    "tab"     => "systemdriver::lang.mail.general",
+                    'label'   => 'winter.mandrilldriver::lang.fields.mandrill_secret.label',
+                    'commentAbove' => 'winter.mandrilldriver::lang.fields.mandrill_secret.comment',
                     'trigger' => [
                         'action'    => 'show',
                         'field'     => 'send_mode',
