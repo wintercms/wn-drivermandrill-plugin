@@ -59,7 +59,7 @@ class Plugin extends PluginBase
                 'mandrill_secret' => [
                     "tab"     => "system::lang.mail.general",
                     'label'   => 'winter.mandrill::lang.fields.mandrill_secret.label',
-                    'comment' => 'winter.mandrill::lang.fields.mandrill_secret.comment',
+                    'commentAbove' => 'winter.mandrill::lang.fields.mandrill_secret.comment',
                     'trigger' => [
                         'action'    => 'show',
                         'field'     => 'send_mode',
