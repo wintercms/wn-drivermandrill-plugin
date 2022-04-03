@@ -26,12 +26,16 @@ class Plugin extends PluginBase
 
     public function register()
     {
-        Event::listen('mailer.beforeRegister', function () {
+        Event::listen('mailer.beforeRegister', function ($mailManager) {
             $settings = MailSetting::instance();
             if ($settings->send_mode === self::MODE_MANDRILL) {
                 $config = App::make('config');
+                $config->set('mail.mailers.mandrill.transport', self::MODE_MANDRILL);
                 $config->set('services.mandrill.secret', $settings->mandrill_secret);
             }
+            $mailManager->extend(self::MODE_MANDRILL, function ($config) {
+                // create custom transport here
+            });
         });
 
     }
