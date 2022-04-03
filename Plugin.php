@@ -8,7 +8,7 @@ use System\Classes\PluginBase;
 use System\Models\MailSetting;
 
 /**
- * Mailgun Plugin Information File
+ * Mandrill Plugin Information File
  */
 class Plugin extends PluginBase
 {
