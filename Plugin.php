@@ -1,16 +1,13 @@
 <?php namespace Winter\MandrillDriver;
 
 use App;
-use Backend;
 use Event;
-use Backend\Models\UserRole;
+
 use System\Classes\PluginBase;
 use System\Models\MailSetting;
 
 use Symfony\Component\Mailer\Transport\Dsn;
 use Symfony\Component\Mailer\Bridge\Mailchimp\Transport\MandrillTransportFactory;
-
-
 
 /**
  * Mandrill Plugin Information File
