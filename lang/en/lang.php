@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'plugin_name' => 'Mandrill mail driver',
     'plugin_description' => 'Mandrill mail driver plugin',
 
     'fields' => [

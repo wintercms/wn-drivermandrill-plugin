@@ -19,7 +19,7 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Mandrill driver',
+            'name'        => 'winter.mandrilldriver::lang.plugin_name',
             'description' => 'winter.mandrilldriver::lang.plugin_description',
             'author'      => 'Winter',
             'icon'        => 'icon-leaf'
