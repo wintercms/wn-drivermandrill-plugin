@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'plugin_description' => "Plugin qui ajoute l'envoi de courriel à travers Mandrill"
+    'plugin_description' => "Plugin qui ajoute l'envoi de courriel à travers Mandrill",
 
     'fields' => [
         'mandrill_secret' => [
