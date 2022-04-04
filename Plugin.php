@@ -36,6 +36,7 @@ class Plugin extends PluginBase
                     $config = $this->app['config']->get('services.mandrill', []);
                 }
 
+
                 return $factory->create(new Dsn(
                     'mandrill+'.($config['scheme'] ?? 'api'),
                     $config['endpoint'] ?? 'default',
@@ -49,9 +50,6 @@ class Plugin extends PluginBase
                 $config->set('mail.mailers.mandrill.transport', self::MODE_MANDRILL);
                 $config->set('services.mandrill.secret', $settings->mandrill_secret);
             }
-            $mailManager->extend(self::MODE_MANDRILL, function ($config) {
-                // TODO: create custom transport
-            });
         });
 
     }
