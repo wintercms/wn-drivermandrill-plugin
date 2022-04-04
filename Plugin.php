@@ -7,6 +7,11 @@ use Backend\Models\UserRole;
 use System\Classes\PluginBase;
 use System\Models\MailSetting;
 
+use Symfony\Component\Mailer\Transport\Dsn;
+use Symfony\Component\Mailer\Bridge\Mailchimp\Transport\MandrillTransportFactory;
+
+
+
 /**
  * Mandrill Plugin Information File
  */
@@ -27,6 +32,20 @@ class Plugin extends PluginBase
     public function register()
     {
         Event::listen('mailer.beforeRegister', function ($mailManager) {
+            $mailManager->extend(self::MODE_MANDRILL, function ($config) {
+                $factory = new MandrillTransportFactory();
+
+                if (!isset($config['secret'])) {
+                    $config = $this->app['config']->get('services.mandrill', []);
+                }
+
+                return $factory->create(new Dsn(
+                    'mandrill+'.($config['scheme'] ?? 'api'),
+                    $config['endpoint'] ?? 'default',
+                    $config['secret']
+                ));
+            });
+
             $settings = MailSetting::instance();
             if ($settings->send_mode === self::MODE_MANDRILL) {
                 $config = App::make('config');
@@ -34,7 +53,7 @@ class Plugin extends PluginBase
                 $config->set('services.mandrill.secret', $settings->mandrill_secret);
             }
             $mailManager->extend(self::MODE_MANDRILL, function ($config) {
-                // create custom transport here
+                // TODO: create custom transport
             });
         });
 
@@ -61,7 +80,7 @@ class Plugin extends PluginBase
 
             $widget->addTabFields([
                 'mandrill_secret' => [
-                    "tab"     => "systemdriver::lang.mail.general",
+                    "tab"     => "system::lang.mail.general",
                     'label'   => 'winter.mandrilldriver::lang.fields.mandrill_secret.label',
                     'commentAbove' => 'winter.mandrilldriver::lang.fields.mandrill_secret.comment',
                     'trigger' => [
