@@ -2,7 +2,7 @@
 
 return [
     'plugin_name' => 'Mandrill mail driver',
-    'plugin_description' => 'Mandrill mail driver plugin',
+    'plugin_description' => 'Mandrill mail driver functionality for Winter CMS.',
 
     'fields' => [
         'mandrill_secret' => [

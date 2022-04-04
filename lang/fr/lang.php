@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'plugin_description' => "Plugin qui ajoute l'envoi de courriel à travers Mandrill",
+    'plugin_description' => "Ajoute le pilote de courriel Mandrill pour Winter CMS.",
 
     'fields' => [
         'mandrill_secret' => [
