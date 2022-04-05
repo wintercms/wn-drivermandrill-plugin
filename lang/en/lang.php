@@ -1,13 +1,11 @@
 <?php
 
 return [
-    'plugin_name' => 'Mandrill mail driver',
-    'plugin_description' => 'Mandrill mail driver functionality for Winter CMS.',
-
-    'fields' => [
-        'mandrill_secret' => [
-            'label' => 'Mandrill secret',
-            'comment' => 'Enter your Mandrill secret',
-        ],
+    'plugin' => [
+        'name' => 'Mail Driver (Mandrill)',
+        'description' => 'Driver that adds support for the Mandrill mailer to WinterCMS',
     ],
+
+    'mandrill_secret' => 'Mandrill secret',
+    'mandrill_secret_comment' => 'Enter your Mandrill API key.',
 ];

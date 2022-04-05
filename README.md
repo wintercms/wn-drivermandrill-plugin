@@ -1,7 +1,7 @@
 ## Installation
 
-```
-# composer require winter/wn-mandrilldriver-plugin
+```bash
+composer require winter/wn-drivermandrill-plugin
 ```
 
 ## How to use this plugin

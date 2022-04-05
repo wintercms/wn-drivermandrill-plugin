@@ -1,16 +1,14 @@
-<?php namespace Winter\MandrillDriver;
+<?php namespace Winter\DriverMandrill;
 
 use App;
 use Event;
-
 use System\Classes\PluginBase;
 use System\Models\MailSetting;
-
 use Symfony\Component\Mailer\Transport\Dsn;
 use Symfony\Component\Mailer\Bridge\Mailchimp\Transport\MandrillTransportFactory;
 
 /**
- * Mandrill Plugin Information File
+ * DriverMandrill Plugin Information File
  */
 class Plugin extends PluginBase
 {
@@ -19,10 +17,11 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'winter.mandrilldriver::lang.plugin_name',
-            'description' => 'winter.mandrilldriver::lang.plugin_description',
+            'name'        => 'winter.drivermandrill::lang.plugin.name',
+            'description' => 'winter.drivermandrill::lang.plugin.description',
+            'homepage'    => 'https://github.com/wintercms/wn-drivermandrill-plugin',
             'author'      => 'Winter',
-            'icon'        => 'icon-leaf'
+            'icon'        => 'icon-leaf',
         ];
     }
 
@@ -35,7 +34,6 @@ class Plugin extends PluginBase
                 if (!isset($config['secret'])) {
                     $config = $this->app['config']->get('services.mandrill', []);
                 }
-
 
                 return $factory->create(new Dsn(
                     'mandrill+'.($config['scheme'] ?? 'api'),
@@ -71,18 +69,19 @@ class Plugin extends PluginBase
             }
 
             $field = $widget->getField('send_mode');
-            $field->options(array_merge($field->options(), [self::MODE_MANDRILL => "Mandrill"]));
+            $field->options(array_merge($field->options(), [self::MODE_MANDRILL => 'Mandrill']));
 
             $widget->addTabFields([
                 'mandrill_secret' => [
-                    "tab"     => "system::lang.mail.general",
-                    'label'   => 'winter.mandrilldriver::lang.fields.mandrill_secret.label',
-                    'commentAbove' => 'winter.mandrilldriver::lang.fields.mandrill_secret.comment',
+                    'tab'     => 'system::lang.mail.general',
+                    'label'   => 'winter.drivermandrill::lang.mandrill_secret',
+                    'commentAbove' => 'winter.drivermandrill::lang.mandrill_secret_comment',
+                    'type'    => 'sensitive',
                     'trigger' => [
                         'action'    => 'show',
                         'field'     => 'send_mode',
-                        'condition' => 'value[mandrill]'
-                    ]
+                        'condition' => 'value[mandrill]',
+                    ],
                 ],
             ]);
         });
