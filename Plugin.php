@@ -58,6 +58,7 @@ class Plugin extends PluginBase
             $model->bindEvent('model.beforeValidate', function () use ($model) {
                 $model->rules['mandrill_secret'] = 'required_if:send_mode,' . self::MODE_MANDRILL;
             });
+            $model->mandrill_secret = config('services.mandrill.secret');
         });
 
         Event::listen('backend.form.extendFields', function ($widget) {
